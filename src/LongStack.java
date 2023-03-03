@@ -1,8 +1,17 @@
+import java.util.NoSuchElementException;
+import java.util.Stack;
 
 public class LongStack {
+   // private instance variable 'top' which defines the top of the stack
    private LongStack top;
+   // private instance variable data, that will hold the data of newly-created object of the class
    private long data;
+   /**
+    * private instance variable next, which point to the next element in the stack of
+    * particular object in the LongStack class
+    */
    private LongStack next;
+
    public static void main (String[] argum) {
 
    }
@@ -19,7 +28,7 @@ public class LongStack {
    public boolean stEmpty() {
       return false;
    }
-
+   // in the push method
    public void push (long a) {
       LongStack newNode = new LongStack();
       newNode.data = a;
@@ -31,8 +40,15 @@ public class LongStack {
 
    }
 
-   public long pop() {
-      return 0;
+   public long pop(){
+      if (top == null){
+         throw new NoSuchElementException("The given stack is empty,push element into it, otherwise nothing can be popped");
+      }
+      else{
+         long value = top.data;
+         top = top.next;
+         return value;
+      }
    }
 
    public void op (String s) {
