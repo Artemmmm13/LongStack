@@ -1,8 +1,8 @@
 
 public class LongStack {
    private LongStack top;
-   long data;
-   LongStack next;
+   private long data;
+   private LongStack next;
    public static void main (String[] argum) {
 
    }
