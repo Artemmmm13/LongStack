@@ -1,5 +1,4 @@
 import java.util.NoSuchElementException;
-import java.util.Stack;
 
 public class LongStack {
    // private instance variable 'top' which defines the top of the stack
@@ -26,9 +25,9 @@ public class LongStack {
    }
 
    public boolean stEmpty() {
-      return false;
+      return top == null;
    }
-   // in the push method
+
    public void push (long a) {
       LongStack newNode = new LongStack();
       newNode.data = a;
