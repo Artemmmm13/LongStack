@@ -41,7 +41,7 @@ public class LongStack {
 
    public long pop(){
       if (top == null){
-         throw new NoSuchElementException("The given stack is empty,push element into it, otherwise nothing can be popped");
+         throw new NoSuchElementException("The given stack is empty,push element into it;\nOtherwise nothing can be popped.");
       }
       else{
          long value = top.data;
@@ -51,6 +51,30 @@ public class LongStack {
    }
 
    public void op (String s) {
+      if (s.equals("+")){
+         long b = pop();
+         long a = pop();
+         push(a / b);
+      }
+      else if(s.equals("-")){
+         long b = pop();
+         long a = pop();
+         push(a - b);
+      }
+      else if (s.equals("*")){
+         long b = pop();
+         long a = pop();
+         push(a * b);
+      }
+      else if (s.equals("/")){
+         long b = pop();
+         long a = pop();
+         push(a / b);
+      }
+      else{
+         throw new IllegalArgumentException("The given operator is invalid: " + s);
+      }
+
 
    }
 
@@ -69,6 +93,7 @@ public class LongStack {
    }
 
    public static long interpret (String pol) {
+
       return 0;
    }
 
