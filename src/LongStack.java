@@ -21,7 +21,11 @@ public class LongStack {
 
    @Override
    public Object clone() throws CloneNotSupportedException {
-      return this;
+      LongStack clone = (LongStack) super.clone();
+      if (this.top != null){
+         clone.top = (LongStack) this.top.clone();
+      }
+      return clone;
    }
 
    public boolean stEmpty() {
