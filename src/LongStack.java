@@ -82,7 +82,8 @@ public class LongStack {
    }
 
    public long tos() {
-      return 0;
+      if (top != null) return top.data;
+      throw new NoSuchElementException("The stack is empty, nothing can be taken form top of it");
    }
 
    @Override
@@ -92,7 +93,19 @@ public class LongStack {
 
    @Override
    public String toString() {
-      return null;
+      StringBuilder stringStack = new StringBuilder();
+      stringStack.append("Stack [");
+
+      LongStack cur = top;
+      while (cur != null){
+         stringStack.append(cur.data);
+         if (cur.next != null){
+            stringStack.append(", ");
+         }
+         cur = cur.next;
+      }
+      stringStack.append("]");
+      return stringStack.toString();
    }
 
    public static long interpret (String pol) {
