@@ -51,28 +51,31 @@ public class LongStack {
    }
 
    public void op (String s) {
-      if (s.equals("+")){
-         long b = pop();
-         long a = pop();
-         push(a / b);
-      }
-      else if(s.equals("-")){
-         long b = pop();
-         long a = pop();
-         push(a - b);
-      }
-      else if (s.equals("*")){
-         long b = pop();
-         long a = pop();
-         push(a * b);
-      }
-      else if (s.equals("/")){
-         long b = pop();
-         long a = pop();
-         push(a / b);
-      }
-      else{
-         throw new IllegalArgumentException("The given operator is invalid: " + s);
+      switch (s) {
+         case "+" -> {
+            long b = pop();
+            long a = pop();
+            push(a + b);
+         }
+         case "-" -> {
+            long b = pop();
+            long a = pop();
+            push(a - b);
+         }
+         case "*" -> {
+            long b = pop();
+            long a = pop();
+            push(a * b);
+         }
+         case "/" -> {
+            long b = pop();
+            long a = pop();
+            if (b == 0){
+               throw new ArithmeticException("Division by zero is impossible");
+            }
+            push(a / b);
+         }
+         default -> throw new IllegalArgumentException("The given operator is invalid: " + s);
       }
 
 
@@ -93,9 +96,37 @@ public class LongStack {
    }
 
    public static long interpret (String pol) {
+      if (pol == null || pol.trim().isEmpty()) {
+         throw new IllegalArgumentException("The given string is either null or contains whitespace characters only");
+      }
+      else {
+         LongStack newStack = new LongStack();
+         String[] chars = pol.split("\\s+");
+         for (String ch : chars) {
+            if (ch.matches("-?\\d+")) {
+               newStack.push(Long.parseLong(ch));
+            } else {
+               try {
+                  newStack.op(ch);
+               } catch (NoSuchElementException e) {
+                  throw new NoSuchElementException("Not enough numbers for operation" + ch);
+               } catch (IllegalArgumentException e) {
+                  throw new IllegalArgumentException("The expression contains invalid operation symbols" + ch);
+               }
+            }
+         }
 
-      return 0;
+         if (newStack.stEmpty()) {
+            throw new IllegalArgumentException("The expression contains too many numbers");
+         }
+
+         long result = newStack.pop();
+
+         if (!newStack.stEmpty()) {
+            throw new IllegalArgumentException("The given expression has too few numbers");
+         }
+         return result;
+      }
    }
-
 }
 
