@@ -1,18 +1,18 @@
 Implement an abstract data type "Stack of long integers" (LIFO)
  using linkedlists.
 String representation of a stack (provided by toString method)
- must be ordered from bottom to top (tos is the last element).
+ must be ordered from bottom to top (tos is the last element).  done
 List of compulsory operations:
-   Constructor for a new stack: LongStack()
-   Copy of the stack: Object clone()
-   Check whether the stack is empty: boolean stEmpty()
-   Adding an element to the stack: void push (long a)
-   Removing an element from the stack: long pop()
-   Arithmetic operation s ( + - * / ) between two topmost elements
-      of the stack (result is left on top): void op (String s)
-   Reading the top without removing it: long tos()
-   Check whether two stacks are equal: boolean equals (Object o)
-   Conversion of the stack to string (top last): String toString()
+   Constructor for a new stack: LongStack()   done
+   Copy of the stack: Object clone()   done
+   Check whether the stack is empty: boolean stEmpty() done
+   Adding an element to the stack: void push (long a) done
+   Removing an element from the stack: long pop() done
+   Arithmetic operation s ( + - * / ) between two topmost elements done
+      of the stack (result is left on top): void op (String s) done
+   Reading the top without removing it: long tos() done
+   Check whether two stacks are equal: boolean equals (Object o) done
+   Conversion of the stack to string (top last): String toString() done
 
 Write a method
     public static long interpret (String pol)
@@ -25,12 +25,12 @@ Write a method
  is not correct. Expression is not correct if it is empty, contains
  illegal symbols, leaves redundant elements on top of stack or
  causes the stack underflow.
-Example. LongStack.interpret ("2 15 -") should return -13 
+Example. LongStack.interpret ("2 15 -") should return -13  done
 
 Make sure that:
-1. The solution uses a list, not an array. There must be no additional
+1. The solution uses a list, not an array. There must be no additional          done
  variable to hold the number of elements.
-2. Instance variables are described by the keyword private,
+2. Instance variables are described by the keyword private,  done
  variable names start with a lowercase letter.
 3. The methods pop, op, and tos check by themselves, that there are
  enough elements on the stack (for example, the method op requires
