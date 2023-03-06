@@ -1,5 +1,4 @@
 import java.util.NoSuchElementException;
-
 public class LongStack {
    // private instance variable 'top' which defines the top of the stack
    private LongStack top;
@@ -91,35 +90,49 @@ public class LongStack {
    public void op (String s) {
       switch (s) {
          case "+" :
-            long b = pop();
-            long a = pop();
-            push(a + b);
+            try {
+               long b = pop();
+               long a = pop();
+               push(a + b);
+            } catch (NoSuchElementException e){
+               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+            }
             break;
          case "-" :
-            long b1 = pop();
-            long a1 = pop();
-            push(a1 - b1);
+            try {
+               long b1 = pop();
+               long a1 = pop();
+               push(a1 - b1);
+            } catch (NoSuchElementException e){
+               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+            }
             break;
          case "*" :
-            long b2 = pop();
-            long a2 = pop();
-            push(a2 * b2);
+            try {
+               long b2 = pop();
+               long a2 = pop();
+               push(a2 * b2);
+            } catch (NoSuchElementException e){
+               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+            }
             break;
          case "/" :
-            long b3 = pop();
-            long a3 = pop();
-            // here we have to make sure that b3 != 0
-            if (b3 == 0){
-               throw new ArithmeticException("Division by zero is impossible");
+            try{
+               long b3 = pop();
+               long a3 = pop();
+               // here we have to make sure that b3 != 0
+               if (b3 == 0){
+                  throw new ArithmeticException("Division by zero is impossible");
+               }
+               push(a3 / b3);
+            } catch (NoSuchElementException e){
+               throw new NoSuchElementException("Stack is empty, nothing can be popped");
             }
-            push(a3 / b3);
             break;
             // if operator is some illegal symbol we throw an exception
          default :
             throw new IllegalArgumentException("The given operator is invalid: " + s);
       }
-
-
    }
 
    // self-explanatory method if stack isn't empty we return top.data, otherwise -> exception
