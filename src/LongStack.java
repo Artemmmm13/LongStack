@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class LongStack implements Cloneable {
+public class LongStack {
    // private instance variable 'top' which defines the top of the stack
    private LongStack top;
    // private instance variable data, that will hold the data of newly-created object of the class
@@ -23,26 +23,25 @@ public class LongStack implements Cloneable {
 
    @Override
    public Object clone() throws CloneNotSupportedException {
-      // overriding method in parent class and creating a copy
-      LongStack clone = (LongStack) super.clone();
+     LongStack newStack = new LongStack();
 
-
+// created new LongStack instance and write logic for new instance
       if (this.top != null){
          // if top != null I assign cloned object into LongStack object
-         clone.top = new LongStack();
-         clone.top.data = this.top.data;
+         newStack.top = new LongStack();
+         newStack.top.data = this.top.data;
          LongStack cur = this.top.next;
-         LongStack prev = clone.top;
+         LongStack prev = newStack.top;
          while (cur != null){
-            // since I copied the first object to clone.top i started from the second
-            LongStack newStack = new LongStack();
+            // since I copied the first object to clone.top I started from the second
+            LongStack newStack1 = new LongStack();
             newStack.data = cur.data;
-            prev.next = newStack;
-            prev = newStack;
+            prev.next = newStack1;
+            prev = newStack1;
             cur = cur.next;
          }
       }
-      return clone;
+      return newStack;
    }
 
    // self-explanatory method if top is null -> stack is empty, otherwise -> not
