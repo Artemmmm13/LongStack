@@ -188,7 +188,7 @@ public class LongStack {
 
    public static long interpret(String pol) {
       if (pol == null || pol.isEmpty()) {
-         throw new RuntimeException("The given string is either null or contains whitespace characters only");
+         throw new RuntimeException("The given string is either null or contains whitespace characters only:" + pol);
       }
       /*
       * here I check whether pol matches any sequence of characters that contain (0-9) digit
@@ -196,7 +196,7 @@ public class LongStack {
 
       else if (!pol.matches(".*\\d.*")) {
          // the input string contains no digits
-         throw new RuntimeException("The given string does not contain any digits");
+         throw new RuntimeException("The given string does not contain any digits:" + pol);
       } else {
          // if string didn't satisfy previous conditions, I create new instance of LongStack
          LongStack newStack = new LongStack();
@@ -218,9 +218,9 @@ public class LongStack {
                try {
                   newStack.op(ch);
                } catch (NoSuchElementException e) {
-                  throw new RuntimeException("Not enough numbers for operation " + ch);
+                  throw new RuntimeException("Not enough numbers for operation:" + pol);
                } catch (RuntimeException e) {
-                  throw new RuntimeException("The expression contains invalid operation symbols " + ch);
+                  throw new RuntimeException("The expression contains invalid operation symbols:" + pol);
                }
             } else {
                throw new RuntimeException("Invalid symbol: " + ch);
@@ -229,15 +229,15 @@ public class LongStack {
 
          if (!hasDigits) {
             // the input string contains no digits
-            throw new RuntimeException("The given string does not contain any digits");
+            throw new RuntimeException("The given string does not contain any digits:" + pol);
          } else if (newStack.stEmpty()) {
-            throw new RuntimeException("The expression contains too few numbers");
+            throw new RuntimeException("The expression contains too few numbers:" + pol);
          }
 
          long result = newStack.pop();
 
          if (!newStack.stEmpty()) {
-            throw new RuntimeException("The expression contains too many numbers");
+            throw new RuntimeException("The expression contains too many numbers:" + pol);
          }
          return result;
       }
