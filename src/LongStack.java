@@ -1,3 +1,4 @@
+// one more submission that improved all the remarks you gave
 import java.util.NoSuchElementException;
 public class LongStack {
    // private instance variable 'top' which defines the top of the stack
@@ -95,7 +96,7 @@ public class LongStack {
                long a = pop();
                push(a + b);
             } catch (NoSuchElementException e){
-               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+               throw new NoSuchElementException("Stack is empty, nothing can be popped" + s);
             }
             break;
          case "-" :
@@ -104,7 +105,7 @@ public class LongStack {
                long a1 = pop();
                push(a1 - b1);
             } catch (NoSuchElementException e){
-               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+               throw new NoSuchElementException("Stack is empty, nothing can be popped" + s);
             }
             break;
          case "*" :
@@ -113,7 +114,7 @@ public class LongStack {
                long a2 = pop();
                push(a2 * b2);
             } catch (NoSuchElementException e){
-               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+               throw new NoSuchElementException("Stack is empty, nothing can be popped" + s);
             }
             break;
          case "/" :
@@ -122,11 +123,11 @@ public class LongStack {
                long a3 = pop();
                // here we have to make sure that b3 != 0
                if (b3 == 0){
-                  throw new ArithmeticException("Division by zero is impossible");
+                  throw new ArithmeticException("Division by zero is impossible" + s);
                }
                push(a3 / b3);
             } catch (NoSuchElementException e){
-               throw new NoSuchElementException("Stack is empty, nothing can be popped");
+               throw new NoSuchElementException("Stack is empty, nothing can be popped" + s);
             }
             break;
             // if operator is some illegal symbol we throw an exception
