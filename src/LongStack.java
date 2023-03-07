@@ -1,4 +1,4 @@
-// one more submission that improved all the remarks you gave
+// one more submission that improved all the remarks you gave -> added context s to op and pol to interpret
 import java.util.NoSuchElementException;
 public class LongStack {
    // private instance variable 'top' which defines the top of the stack
@@ -215,7 +215,8 @@ public class LongStack {
          // if string didn't satisfy previous conditions, I create new instance of LongStack
          LongStack newStack = new LongStack();
          /*
-         * array of substrings which was created from pol from which were removed whitespaces from left and right side*/
+         * array of substrings which was created from pol from which were removed whitespaces from left and right side
+         * the resulted array is array of substring which are split using whitespace character as a delimiter*/
          String[] chars = pol.trim().split("\\s+");
          boolean hasDigits = false;
 
